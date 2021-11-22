@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -16,16 +18,6 @@ class Product
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
-     */
-    private $category_id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=SubCategory::class, inversedBy="products")
-     */
-    private $subcategory_id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,34 +59,31 @@ class Product
      */
     private $stock;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=SubCategory::class, inversedBy="products")
+     */
+    private $subCategory;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="product")
+     */
+    private $subcategory_id;
+
+    public function __construct()
+    {
+        $this->subcategory_id = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCategoryId(): ?Category
-    {
-        return $this->category_id;
-    }
-
-    public function setCategoryId(?Category $category_id): self
-    {
-        $this->category_id = $category_id;
-
-        return $this;
-    }
-
-    public function getSubcategoryId(): ?SubCategory
-    {
-        return $this->subcategory_id;
-    }
-
-    public function setSubcategoryId(?SubCategory $subcategory_id): self
-    {
-        $this->subcategory_id = $subcategory_id;
-
-        return $this;
-    }
 
     public function getName(): ?string
     {
@@ -188,6 +177,58 @@ class Product
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }public function getCategory(): ?Category
+{
+    return $this->category;
+}
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function getSubCategory(): ?SubCategory
+    {
+        return $this->subCategory;
+    }
+
+    public function setSubCategory(?SubCategory $subCategory): self
+    {
+        $this->subCategory = $subCategory;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SubCategory[]
+     */
+    public function getSubcategoryId(): Collection
+    {
+        return $this->subcategory_id;
+    }
+
+    public function addSubcategoryId(SubCategory $subcategoryId): self
+    {
+        if (!$this->subcategory_id->contains($subcategoryId)) {
+            $this->subcategory_id[] = $subcategoryId;
+            $subcategoryId->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubcategoryId(SubCategory $subcategoryId): self
+    {
+        if ($this->subcategory_id->removeElement($subcategoryId)) {
+            // set the owning side to null (unless already changed)
+            if ($subcategoryId->getProduct() === $this) {
+                $subcategoryId->setProduct(null);
+            }
+        }
 
         return $this;
     }

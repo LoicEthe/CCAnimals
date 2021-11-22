@@ -25,14 +25,26 @@ class SubCategory
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="subcategory_id")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="subCategory")
      */
     private $products;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="subcategory_id")
+     */
+    private $product;
+
+    public function __toString(){
+        return $this->getName();
+    }
+
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
     }
+
+
 
     public function getId(): ?int
     {
@@ -49,11 +61,9 @@ class SubCategory
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Product[]
-     */
+    }/**
+ * @return Collection|Product[]
+ */
     public function getProducts(): Collection
     {
         return $this->products;
@@ -63,7 +73,7 @@ class SubCategory
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setSubcategoryId($this);
+            $product->setSubCategory($this);
         }
 
         return $this;
@@ -73,10 +83,22 @@ class SubCategory
     {
         if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($product->getSubcategoryId() === $this) {
-                $product->setSubcategoryId(null);
+            if ($product->getSubCategory() === $this) {
+                $product->setSubCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

@@ -25,14 +25,22 @@ class Category
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category_id")
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="category")
      */
     private $products;
+
+
+    public function __toString(){
+
+        return $this->getName();
+    }
+
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -49,32 +57,30 @@ class Category
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Product[]
-     */
+    }/**
+ * @return Collection|product[]
+ */
     public function getProducts(): Collection
     {
         return $this->products;
     }
 
-    public function addProduct(Product $product): self
+    public function addProduct(product $product): self
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategoryId($this);
+            $product->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeProduct(Product $product): self
+    public function removeProduct(product $product): self
     {
         if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($product->getCategoryId() === $this) {
-                $product->setCategoryId(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
         }
 
