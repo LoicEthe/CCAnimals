@@ -23,7 +23,7 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <a href="" class="btn btn-primary">Ajouter au panier</a>
+            <a href="{{ path('add_to_cart',{'id': product.id } ) }}" class="btn btn-primary">Ajouter au panier</a>
         </div>
     </div>
     <hr>
