@@ -20,7 +20,7 @@ class OrderDetails
     /**
      * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderDetails")
      */
-    private $myorder_id;
+    private $myorder;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -42,19 +42,24 @@ class OrderDetails
      */
     private $total;
 
+    public function __toString()
+    {
+        return $this->getProduct().' x'.$this->getQuantity();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getMyorderId(): ?Order
+    public function getMyorder(): ?Order
     {
-        return $this->myorder_id;
+        return $this->myorder;
     }
 
-    public function setMyorderId(?Order $myorder_id): self
+    public function setMyorder(?Order $myorder): self
     {
-        $this->myorder_id = $myorder_id;
+        $this->myorder = $myorder;
 
         return $this;
     }

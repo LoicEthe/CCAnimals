@@ -23,7 +23,7 @@ class Order
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="orders")
      */
-    private $user_id;
+    private $user;
 
     /**
      * @ORM\Column(type="datetime")
@@ -61,7 +61,7 @@ class Order
     private $state;
 
     /**
-     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myorder_id")
+     * @ORM\OneToMany(targetEntity=OrderDetails::class, mappedBy="myorder")
      */
     private $orderDetails;
 
@@ -75,14 +75,25 @@ class Order
         return $this->id;
     }
 
-    public function getUserId(): ?User
-    {
-        return $this->user_id;
+    public function getTotal(){
+        $total = null;
+
+        foreach ( $this->getOrderDetails()->getValues() as $product){
+            $total = $total + ($product->getPrice() * $product->getQuantity());
+        }
+
+        return $total;
+
     }
 
-    public function setUserId(?User $user_id): self
+    public function getUser(): ?User
     {
-        $this->user_id = $user_id;
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
@@ -183,7 +194,7 @@ class Order
     {
         if (!$this->orderDetails->contains($orderDetail)) {
             $this->orderDetails[] = $orderDetail;
-            $orderDetail->setMyorderId($this);
+            $orderDetail->setMyorder($this);
         }
 
         return $this;
@@ -193,8 +204,8 @@ class Order
     {
         if ($this->orderDetails->removeElement($orderDetail)) {
             // set the owning side to null (unless already changed)
-            if ($orderDetail->getMyorderId() === $this) {
-                $orderDetail->setMyorderId(null);
+            if ($orderDetail->getMyorder() === $this) {
+                $orderDetail->setMyorder(null);
             }
         }
 
