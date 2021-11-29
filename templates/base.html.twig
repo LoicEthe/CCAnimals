@@ -10,6 +10,8 @@
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet"/>
+    {%  block javascript%}
+    {% endblock %}
 </head>
 <body>
 {% include '_partial/_navbar.html.twig' %}
@@ -17,4 +19,6 @@
 
 
 </body>
+{% block script %}
+{% endblock %}
 </html>

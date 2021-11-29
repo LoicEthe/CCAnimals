@@ -158,12 +158,14 @@ class Order
         return $this;
     }
 
+
+
     public function getStripeSessionId(): ?int
     {
         return $this->stripe_session_id;
     }
 
-    public function setStripeSessionId(?int $stripe_session_id): self
+    public function setStripeSessionId(?string $stripe_session_id): self
     {
         $this->stripe_session_id = $stripe_session_id;
 
@@ -211,4 +213,5 @@ class Order
 
         return $this;
     }
+
 }
