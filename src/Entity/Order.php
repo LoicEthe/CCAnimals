@@ -51,7 +51,7 @@ class Order
     private $reference;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $stripe_session_id;
 
@@ -160,7 +160,7 @@ class Order
 
 
 
-    public function getStripeSessionId(): ?int
+    public function getStripeSessionId(): ?string
     {
         return $this->stripe_session_id;
     }
