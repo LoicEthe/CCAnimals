@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Mail;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -47,6 +48,11 @@ class RegisterController extends AbstractController
             }else{
                 $notification = "L email existe deja";
             }
+
+            // envoi du mail de confirmation d'inscription
+            $mail = new Mail();
+            $content = "Bonjour ".$user->getFirstname()."<br/>Bienvenue sur Papatte et patoune, merci pour votre inscription";
+            $mail->send($user->getEmail(),$user->getFirstname(),'Bienvenue sur Papatte et Patoune',$content);
         }
 
         return $this->render('register/index.html.twig',[

@@ -38,9 +38,9 @@ class OrderSuccessController extends AbstractController
             $this->entityManager->flush();
 
             // envoi du mail confirmation de commande
-            //$mail = new Mail();
-            //$content = "Bonjour ".$order->getUser()->getFirstname()."<br/>Merci pour votre de commande";
-            //$mail->send($order->getUser()->getEmail(),$order->getUser()->getFirstname(),'Votre commande sur la boutique française est bien validée',$content);
+            $mail = new Mail();
+            $content = "Bonjour ".$order->getUser()->getFirstname()."<br/>Merci pour votre de commande";
+            $mail->send($order->getUser()->getEmail(),$order->getUser()->getFirstname(),'Votre commande sur Papatte et patoune',$content);
         }
 
         return $this->render('order_status/success.html.twig',[
