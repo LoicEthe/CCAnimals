@@ -6,6 +6,9 @@
 parameters:
     secretStripe: 'sk_test_51JzxXPKJu3rFSHy5o9nIVn69qFrTljKgPkmkfQlrLXBSINYENVhJKBacXwtC3JvbMraw280O1YBO8w77zR1hktQb00NkR6Gkek'
     publicStripe: 'pk_test_51JzxXPKJu3rFSHy5PfRnt4nKTKv9ssgNJbuVyK65FK7IFomkWoIkK4U7GxIg7ApeeVrrrWW2G9qIrMYR0nlkaqT9006girChTG'
+    secretMail: '2df351b617030ad787e2af3594848d41'
+    publicMail: 'bea59e33efaae5d0f0d0048cad247880'
+
 services:
     # default configuration for services in *this* file
     _defaults:

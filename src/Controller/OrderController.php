@@ -46,6 +46,7 @@ class OrderController extends AbstractController
      */
     public function add(CartService $cart, Request $request)
     {
+
         $form = $this->createForm(OrderType::class, null, [
             'user' => $this->getUser()
         ]);
@@ -98,7 +99,8 @@ class OrderController extends AbstractController
                 'cart' => $cart->getFull(),
                 'carrier' => $carriers,
                 'delivery' => $delivery_content,
-                'reference' => $order->getReference()
+                'reference' => $order->getReference(),
+
             ]);
         }
 

@@ -51,32 +51,141 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
-    // /**
-    //  * @return Product[] Returns an array of Product objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    // trier par categ
+    public function findWithCategoryDog(){
+        $query = $this
+            ->createQueryBuilder('p') // on crée une query avec la table produit, représentée par un p
+            ->select('c','p') // on séléctionne c pour catégorie et p pour product
+            ->andWhere('p.category = 1')
+            ->join('p.category','c') // on fait la jointure entre le produit de la catégorie et la categ
+            ;
 
-    /*
-    public function findOneBySomeField($value): ?Product
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $query->getQuery()->getResult();
     }
-    */
+
+
+    public function findWithCategoryCat(){
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p')
+            ->andWhere('p.category = 2')
+            ->join('p.category','c')
+        ;
+
+        return $query->getQuery()->getResult();
+    }
+
+    //trier par Chien et  sous categ
+    public function findWithSubCat1(){ // pour chercher accessoires pour chien
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 1')
+            ->andWhere('p.subCategory = 1');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCat2(){ // pour chercher soins pour chien
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 1')
+            ->andWhere('p.subCategory = 2');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCat3(){ // pour chercher jouets pour chien
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 1')
+            ->andWhere('p.subCategory = 3');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCat4(){ // pour chercher alimentation pour chien
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 1')
+            ->andWhere('p.subCategory = 4');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCat5(){ // pour chercher voyage pour chien
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 1')
+            ->andWhere('p.subCategory = 5');
+        return $query->getQuery()->getResult();
+    }
+
+    //trier par Chat et  sous categ
+    public function findWithSubCateg1(){ // pour chercher accessoires pour chat
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 2')
+            ->andWhere('p.subCategory = 1');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCateg2(){ // pour chercher soins pour chat
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 2')
+            ->andWhere('p.subCategory = 2');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCateg3(){ // pour chercher jouets pour chat
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 2')
+            ->andWhere('p.subCategory = 3');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCateg4(){ // pour chercher alimentation pour chat
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 2')
+            ->andWhere('p.subCategory = 4');
+        return $query->getQuery()->getResult();
+    }
+
+    public function findWithSubCateg5(){ // pour chercher voyage pour chat
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c','p','s')
+            ->join('p.category','c')
+            ->join('p.subCategory','s')
+            ->andWhere('p.category = 2')
+            ->andWhere('p.subCategory = 5');
+        return $query->getQuery()->getResult();
+    }
+
+
 }

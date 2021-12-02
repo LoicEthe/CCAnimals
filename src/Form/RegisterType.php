@@ -64,6 +64,7 @@ class RegisterType extends AbstractType
                 ]
             )
             ->add('birthdate',BirthdayType::class,[
+                'years' => range(date('Y'), date('Y') -100),
                 'label' => 'Date de naissance',
             ])
             ->add('password',RepeatedType::class,[

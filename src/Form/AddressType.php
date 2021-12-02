@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class AddressType extends AbstractType
 {
@@ -20,19 +21,31 @@ class AddressType extends AbstractType
                 'label' => 'Quel nom souhaitez-vous donner à votre adresse ?',
                 'attr' => [
                     'placeholder' => 'Nommez votre adresse'
-                ]
+                ],
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ])
             ])
             ->add('firstname', TextType::class, [
                 'label' => 'Votre prénom',
                 'attr' => [
                     'placeholder' => 'Entrez votre prénom'
-                ]
+                ],
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ])
             ])
             ->add('lastname', TextType::class, [
                 'label' => 'Votre nom',
                 'attr' => [
                     'placeholder' => 'Entre votre nom'
-                ]
+                ],
+                'constraints' => new Length([
+                    'min' => 2,
+                    'max' => 30
+                ])
             ])
             ->add('company', TextType::class, [
                 'label' => 'Votre société',
@@ -50,8 +63,13 @@ class AddressType extends AbstractType
             ->add('postal', TextType::class, [
                 'label' => 'Votre code postal',
                 'attr' => [
-                    'placeholder' => 'Entrez votre code postal'
-                ]
+                    'placeholder' => 'Entrez votre code postal',
+                    'min' => 01000,
+                    'max' => 99000
+                ],
+                'constraints' => new Length([
+                    'max' => 5
+                ])
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville',
@@ -69,7 +87,11 @@ class AddressType extends AbstractType
                 'label' => 'Votre téléphone',
                 'attr' => [
                     'placeholder' => 'Entrez votre téléphone'
-                ]
+                ],
+                'constraints' => new Length([
+                    'min' => 10,
+                    'max' => 10
+                ])
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Valider',

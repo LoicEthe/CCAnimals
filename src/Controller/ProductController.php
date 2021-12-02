@@ -42,7 +42,6 @@ class ProductController extends AbstractController
     }
 
     #[Route('/produit/{slug}', name: 'product')]
-
     public function show($slug): Response //on appelle slug pour compléter l'URL
     {
 
@@ -57,4 +56,6 @@ class ProductController extends AbstractController
             //'products' => $products
         ]);
     }
+
+
 }
