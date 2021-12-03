@@ -37,6 +37,11 @@ class Header
      */
     private $btn_url;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $illustration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Header
     public function setBtnUrl(string $btn_url): self
     {
         $this->btn_url = $btn_url;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }
