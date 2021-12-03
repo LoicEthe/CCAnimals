@@ -19,10 +19,12 @@
 
 .navbar-dark .navbar-nav .active > .nav-link
 {
+    display: flex;
     font-size: 12px;
     line-height: 20px;
     text-transform: uppercase;
     color: #000;
+    justify-content: space-between;
     font-weight: 500;
     -webkit-transition: all 350ms ease-out;
     -o-transition: all 350ms ease-out;
@@ -108,4 +110,14 @@
 .footer-custom >p >a{
     text-decoration: none;
     color: inherit;
+}
+
+#logo
+{
+    height: 100px;
+    margin-left: 180px;
+}
+.navbar-expand-md .navbar-nav {
+    align-items: center;
+    height: 30px;
 }
