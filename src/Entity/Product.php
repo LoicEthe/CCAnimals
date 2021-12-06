@@ -49,10 +49,7 @@ class Product
      */
     private $price;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $is_best;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -73,6 +70,11 @@ class Product
      * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="product")
      */
     private $subcategory_id;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isBest;
 
     public function __construct()
     {
@@ -157,17 +159,6 @@ class Product
         return $this;
     }
 
-    public function getIsBest(): ?bool
-    {
-        return $this->is_best;
-    }
-
-    public function setIsBest(?bool $is_best): self
-    {
-        $this->is_best = $is_best;
-
-        return $this;
-    }
 
     public function getStock(): ?int
     {
@@ -229,6 +220,18 @@ class Product
                 $subcategoryId->setProduct(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsBest(): ?bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(?bool $isBest): self
+    {
+        $this->isBest = $isBest;
 
         return $this;
     }

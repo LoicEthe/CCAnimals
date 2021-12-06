@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Entity\OrderDetails;
+use App\Entity\Product;
 use App\Form\OrderType;
 use App\Service\Cart\CartService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -79,6 +80,7 @@ class OrderController extends AbstractController
             $order->setCarrierPrice($carriers->getPrice());
             $order->setDelivery($delivery_content);
             $order->setState(0);
+
 
             $this->entityManager->persist($order);
 

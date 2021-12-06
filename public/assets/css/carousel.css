@@ -4,7 +4,6 @@
 
 body {
     padding-top: 3rem;
-    padding-bottom: 3rem;
     color: #5a5a5a;
 }
 
@@ -20,7 +19,11 @@ body {
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+
 }
+
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
@@ -34,22 +37,6 @@ body {
     height: 37rem;
     background-position: top;
 }
-
-
-
-
-.featurette-divider {
-    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
-}
-
-/* Thin out the marketing headings */
-.featurette-heading {
-    font-weight: 300;
-    line-height: 1;
-    letter-spacing: -.05rem;
-}
-
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
