@@ -93,24 +93,7 @@
     letter-spacing: 1px;
 }
 
-.footer-custom{
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #383838;
-    padding-top: 25px;
-    margin-top: 50px;
-}
 
-.footer-custom >p{
-    color: white;
-}
-
-.footer-custom >p >a{
-    text-decoration: none;
-    color: inherit;
-}
 
 #logo
 {
@@ -136,4 +119,53 @@
     color: rgba(255, 255, 255, 0.68);
     font-size: 11px;
     letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
 }
+
+.social-icons{
+    width: 200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.text-white > span{
+    letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 200;
+
+}
+.text-center{
+    letter-spacing: 1px;
+    font-family: "Poppins", sans-serif;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 200;
+}
+
+.best_vente{
+    margin-bottom: 100px;
+}
+
+.news{
+    margin-bottom: 200px;
+
+}
+
+.product-item {
+    margin-top: 50px ;
+}
+
+.product-price{
+    font-weight: bold;
+    font-size: 13px;
+
+}
+.product-item .product-subtitle{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 10px;
+}
+

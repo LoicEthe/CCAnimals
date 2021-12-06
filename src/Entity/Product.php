@@ -76,6 +76,11 @@ class Product
      */
     private $isBest;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isNew;
+
     public function __construct()
     {
         $this->subcategory_id = new ArrayCollection();
@@ -232,6 +237,18 @@ class Product
     public function setIsBest(?bool $isBest): self
     {
         $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    public function getIsNew(): ?bool
+    {
+        return $this->isNew;
+    }
+
+    public function setIsNew(?bool $isNew): self
+    {
+        $this->isNew = $isNew;
 
         return $this;
     }
