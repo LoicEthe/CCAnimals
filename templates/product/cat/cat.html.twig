@@ -6,31 +6,14 @@
 
     <section class="section-products">
         <div class="container">
-            <div class="row justify-content-center text-center">
-                <div class="col-md-8 col-lg-6">
-                    <div class="header">
-                        <h2>Tous les produits</h2>
-                    </div>
-                </div>
-            </div>
             <div class="row">
                 {% for product in products %}
                     <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div id="product-1" class="single-product">
-                            <div class="part-1">
-                                <a href="{{ path('product',{'slug' : product.slug}) }}"> <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid"></a>
-                                <ul>
-                                    <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-expand"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="part-2">
-                                <h3 class="product-title">{{ product.name }}</h3>
-                                <h4 class="product-subtitle">{{ product.subtitle }}</h4>
-                                <h4 class="product-price">{{( product.price / 100)|number_format(2) }} €</h4>
-                            </div>
+                        <div class="product-item text-center">
+                            <a href="{{ path('product',{'slug' : product.slug}) }}"> <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid"></a>
+                            <span class="title">{{ product.name }}</span>
+                            <span class="product-subtitle">{{ product.subtitle }}</span>
+                            <span class="product-price">{{( product.price / 100)|number_format(2) }} €</span>
                         </div>
                     </div>
                 {% endfor %}

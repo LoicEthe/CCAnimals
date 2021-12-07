@@ -62,4 +62,31 @@
 
         </div>
     </nav>
+
+    <!-- Menu Hamburger -->
+    <div class="menu_mobile">
+        <a href="{{ path('home') }}">Papatte et Patoune</a>
+        <div id="myLinks">
+            <a href="{{ path('product_chien') }}">Collection Chiens</a>
+            <a href="{{ path('product_chat') }}">Collection Chat</a>
+            <a href="{{ path('products') }}">Tout les produits</a>
+            <a href="{{ path('account') }}">Mon compte</a>
+            <a href="{{ path('cart') }}">Mon panier</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
 </header>
+
+<script>
+    function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
+

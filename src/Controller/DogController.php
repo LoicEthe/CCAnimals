@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Classe\SearchSub;
 use App\Entity\Product;
+use App\Form\DogFormType;
+use App\Form\SearchType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,14 +21,16 @@ class DogController extends AbstractController
     }
 
     #[Route('/produits/chien', name: 'product_chien')]
-    public function dog(): Response
+    public function dog(Request $request): Response
     {
+
+
         $product = $this->entityManager->getRepository(Product::class)->findWithCategoryDog();
         if(!$product){
             return $this->redirectToRoute('products');
         }
         return $this->render('product/dog/dog.html.twig',[
-            'products' => $product
+            'products' => $product,
         ]);
     }
 
