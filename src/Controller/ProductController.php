@@ -46,14 +46,14 @@ class ProductController extends AbstractController
     {
 
         $product = $this->entityManager->getRepository(Product::class)->findOneBySlug($slug); // recherche un seul unique par le slug
-        //$products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
+        $products = $this->entityManager->getRepository(Product::class)->findByIsBest(1);
 
         if(!$product){
             return $this->redirectToRoute('products');
         }
         return $this->render('product/show.html.twig', [
             'product' => $product,
-            //'products' => $products
+            'products' => $products
         ]);
     }
 
