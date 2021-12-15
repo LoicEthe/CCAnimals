@@ -3,11 +3,13 @@
 {% block title %}Valider ma commande{% endblock %}
 
 {% block content %}
-    <h2>Je passe ma commande</h2>
-    Choisissez vos préférences de livraison avant de passer commande.
+    <div class="title_order">
+        <h5>Je passe ma commande</h5>
+        Choisissez vos préférences de livraison avant de passer commande.
+    </div>
     <hr>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="row body_order_class">
+        <div class="col-md-6 form_class">
             {% set formHtml %}
                 {{ form_start(form,{action:path('order_recap')}) }}
                 {{ form_label(form.addresses, 'Choisissez votre adresse de livraison') }}
@@ -17,9 +19,6 @@
             {{ formHtml|replace({'[br]' : '<br/>'})|raw }}
         </div>
         <div class="col-md-6">
-            <div class="text-center">
-                <b>Récap de ma commande</b><br>
-            </div>
             <div class="order_summary">
                 {%  for key,product in cart %}
                     <div class="row {% if key > 0 %} mt-2 {% endif %}">
@@ -35,7 +34,6 @@
                     </div>
                 {% endfor %}
             </div>
-
         </div>
     </div>
 {% endblock %}

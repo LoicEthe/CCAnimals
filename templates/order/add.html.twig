@@ -7,10 +7,12 @@
 {% block title %}Paiement de ma commande - Papatte et Patoune{% endblock %}
 
 {% block content %}
-    <h2>Mon récapitulatif</h2>
-    <p>Vérifiez vos informations avant de payer votre commande.</p>
+    <div class="title_order">
+        <h2>Mon récapitulatif</h2>
+        <p>Vérifiez vos informations avant de payer votre commande.</p>
+    </div>
     <hr>
-    <div class="row">
+    <div class="row body_order_class">
         <div class="col-md-6">
             <strong>Mon adresse de livraison</strong><br/>
             <div class="form-check mt-4">
@@ -25,10 +27,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="text-center">
-                <b>Ma commande</b><br/>
-            </div>
-            <div class="order-summary">
+            <div class="order_end_summary">
                 {% set total = null %}
                 {% for key,product in cart %}
                     <div class="row {% if key > 0 %}mt-2{% endif %}">
@@ -65,7 +64,7 @@
 
 {% block script %}
     <script type="text/javascript">
-        var stripe = Stripe({{ publicstripe }});
+        var stripe = Stripe("pk_test_51JzxXPKJu3rFSHy5PfRnt4nKTKv9ssgNJbuVyK65FK7IFomkWoIkK4U7GxIg7ApeeVrrrWW2G9qIrMYR0nlkaqT9006girChTG");
         var checkoutButton = document.getElementById("checkout-button");
         checkoutButton.addEventListener("click", function () {
             fetch("/commande/create-session/{{ reference }}", {

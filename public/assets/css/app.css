@@ -7,13 +7,15 @@
 }
 
 .form-check{
-    background-color: #f4f8ff ;
+    background-color: #fffcfc  !important;
     padding:20px 65px;
     margin-top: 7px;
 }
 
+.title_order{
+    margin-left: 72px;
+    font-family: "Poppins", sans-serif;
 
-.navbar {
 
 }
 
@@ -288,7 +290,7 @@
 }
 
 .body_class{
-    background-color: #f9f7f4;
+    background-color: #fff3f3;
     width: 90%;
     margin-left: 60px;
     margin-bottom: 100px;
@@ -301,13 +303,59 @@
 }
 
 .validate_class{
-    background-color: #383838;
+    background-color: #fff3f3;
     font-size: 14px;
     font-family: Poppins,sans-serif;
     font-weight: 400;
     text-transform: uppercase;
     margin-top: 150px;
+    color: #383838;
+    border-color: #383838;
 }
+
+.order_end_summary{
+    background-color: #fffcfc ;
+    padding: 20px;
+    color: black;
+    margin-top: 48px;
+    border: 1px solid;
+}
+
+.order_summary{
+    background-color: #fffcfc ;
+    padding: 20px;
+    color: black;
+    margin-top: 70px;
+    border: 1px solid;
+}
+.form-check{
+    border: 1px solid;
+}
+
+.body_order_class{
+    background-color: white;
+    width: 90%;
+    margin-left: 60px;
+    margin-bottom: 100px;
+    margin-top: 11px;
+}
+
+.test{
+    margin-top: 12px;
+    font-family: "Poppins", sans-serif;
+    background-color: #383838;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    margin-bottom: 100px;
+
+}
+
+
 
 @media screen and (min-width: 640px) {
     .menu_mobile{
