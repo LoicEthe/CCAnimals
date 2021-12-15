@@ -39,13 +39,49 @@ class OrderCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions{
 
+        $updateNotPayed =  Action::new('updateNotPaid','Commande non payée','fas fa-box-open')->linkToCrudAction('updateNotPayed');
+        $updatePayed =  Action::new('updatePayed','Commande payée','fas fa-box-open')->linkToCrudAction('updatePayed');
         $updatePreparation =  Action::new('updatePreparation','Préparation en cours','fas fa-box-open')->linkToCrudAction('updatePreparation');
         $updateDelivery =  Action::new('updateDelivery','Livraison en cours','fas fa-truck')->linkToCrudAction('updateDelivery');
 
         return $actions
+            ->add('detail',  $updateNotPayed)
+            ->add('detail',  $updatePayed)
             ->add('detail',  $updatePreparation)
             ->add('detail',  $updateDelivery)
             ->add('index','detail');
+    }
+
+    public function updateNotPayed(AdminContext $context)
+    {
+        $order = $context->getEntity()->getInstance();
+        $order->setState(0);
+        $this->entityManager->flush();
+
+        $this->addFlash('notice', "<span style='color:green;'><strong>La commande ".$order->getReference()." est bien <u>en cours de préparation</u>.</strong></span>");
+
+        $routeBuilder = $this->get(AdminUrlGenerator::class);
+
+        return $this->redirect($routeBuilder
+            ->setController(OrderCrudController::class)
+            ->setAction('index')
+            ->generateUrl());
+    }
+
+    public function updatePayed(AdminContext $context)
+    {
+        $order = $context->getEntity()->getInstance();
+        $order->setState(1);
+        $this->entityManager->flush();
+
+        $this->addFlash('notice', "<span style='color:green;'><strong>La commande ".$order->getReference()." est bien <u>en cours de préparation</u>.</strong></span>");
+
+        $routeBuilder = $this->get(AdminUrlGenerator::class);
+
+        return $this->redirect($routeBuilder
+            ->setController(OrderCrudController::class)
+            ->setAction('index')
+            ->generateUrl());
     }
 
     public function updatePreparation(AdminContext $context)

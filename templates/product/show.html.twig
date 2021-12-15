@@ -18,13 +18,16 @@
                 {% if product.stock < 1 %}
                     <a class="btn btn-secondary disabled">Article épuisé</a>
                 {% else %}
-                    <a href="{{ path('add_to_cart',{'id': product.id } ) }}" class="btn btn-primary">Ajouter au panier</a>
+                    <a href="{{ path('add_to_cart',{'id': product.id } ) }}" class="btn btn-success">Ajouter au panier</a>
                 {% endif %}
         </div>
     </div>
     <hr>
-    <h3>Nos meilleures ventes</h3>
-    <p>Découvrez les articles les plus vendus.</p>
+    <div class="title_best">
+        <h3>Nos meilleures ventes</h3>
+        <p>Découvrez les articles les plus vendus.</p>
+    </div>
+
     <div class="row">
         {% for product in products %}
             <div class="col-md-3">
