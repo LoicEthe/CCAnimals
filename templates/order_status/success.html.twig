@@ -1,19 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Confirmation de commande - La Boutique Française{% endblock %}
+{% block title %}Confirmation de commande - Papatte et Patoune{% endblock %}
 
 {% block content %}
-    <div class="test">
-        <p>
-            Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br/><br/>
-            Nous vous remercions pour votre commande n°<strong>{{ order.reference }}</strong>.<br/>
-            Une confirmation vient de vous être envoyée par email à l'adresse <strong>{{ order.user.email }}</strong>.
-        <hr>
-        Votre commande sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : <br/>
-        {{ order.delivery|raw }}
-        <hr>
-        Pour suivre votre commande, rendez-vous dans votre <a href="{{ path('account_order') }}"> mes commandes</a>
-        </p>
+    <div class="order_success">
+        <table id="table_success">
+            <tr>
+                <td><img id="happy_dog" src="{{ asset('assets/img/happy_dog.jpg') }}" alt="happy_dog"></td>
+                <td id="info_order">
+                    <table>
+                        <tr><td>Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</td></tr>
+                        <tr><td>Nous vous remercions pour votre commande n°<strong>{{ order.reference }}</td></tr>
+                        <tr><td>Une confirmation vient de vous être envoyée par email à l'adresse <strong>{{ order.user.email }}</td></tr>
+                        <tr><td>Votre commande sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse suivante : </td></tr>
+                        <tr><td> {{ order.delivery|raw }}</td></tr>
+                        <tr><td> Pour suivre votre commande, rendez-vous dans votre <a href="{{ path('account_order') }}"> mes commandes</a></td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
     </div>
-
 {% endblock %}

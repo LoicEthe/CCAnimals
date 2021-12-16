@@ -342,21 +342,24 @@
     margin-top: 11px;
 }
 
-.test{
-    margin-top: 12px;
-    font-family: "Poppins", sans-serif;
-    background-color: #383838;
-    color: white;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 50%;
-    margin-left: 25%;
-    text-align: center;
+.order_success
+{
     margin-bottom: 100px;
+    margin-left: 350px;
+    margin-top: 15px;
+    border: 1px solid grey;
+    width: 800px;
 
 }
+#happy_dog{
+    width: 300px;
+    height: 400px;
+}
 
+#info_order{
+    font-family: Poppins,sans-serif;
+    font-weight: 400;
+}
 
 
 @media screen and (min-width: 640px) {
