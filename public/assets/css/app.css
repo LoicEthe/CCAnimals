@@ -317,11 +317,11 @@
 }
 
 .order_summary{
-    background-color: #fffcfc ;
+    background-color: #F6F7F9 ;
     padding: 20px;
     color: black;
-    margin-top: 70px;
-    border: 1px solid;
+    margin-top: 65px;
+
 }
 
 
@@ -371,6 +371,33 @@
     border: none;
 }
 
+.form-check {
+    position: relative;
+    display: flex;
+    padding-left: 1.25rem;
+    background-color: #F6F7F9;
+    margin-bottom: 10px;
+
+}
+
+.filter_class{
+    text-align: left;
+    font-size: 15px;
+    color: #282828;
+}
+.form-check-label{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.form-check-input{
+    position: absolute;
+    margin-top: 19px;
+}
+
+.form_search{
+    margin-left: 20px;
+}
 .form_validate{
     background-color: #C1FF3E;
     width: 100%;

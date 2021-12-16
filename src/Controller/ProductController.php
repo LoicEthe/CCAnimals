@@ -24,7 +24,7 @@ class ProductController extends AbstractController
     {
 
         $search = new Search();
-        $form = $this->createForm(SearchType::class,$search);
+        $form = $this->createForm(SearchType::class,$search,['attr' => ['class' => 'form_search']]);
 
         $form->handleRequest($request);
 

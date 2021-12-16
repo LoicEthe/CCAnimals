@@ -36,12 +36,12 @@ class SearchType extends AbstractType{
                 'required' =>false,
                 'class' => SubCategory::class,
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('submit', SubmitType::class,[
                 'label' => 'Filtrer',
                 'attr' =>[
-                    'class' => 'btn-block-filtre'
+                    'class' => 'form_validate'
                 ]
             ]);
     }
