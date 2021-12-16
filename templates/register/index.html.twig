@@ -3,11 +3,28 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
-    <h1 style="text-align: center">Inscription</h1>
+    <div class="row">
         {% if notification %}
             <div class="alert-info">
-            {{ notification }}
+                {{ notification }}
             </div>
         {% endif %}
-    {{ form(form) }}
+        <table id="table_register">
+            <tr>
+                <td id="bloc_left"></td>
+                <td id="bloc_register">
+                    <table style="margin-left: 50px;">
+                        <tr><td>{{ form_row(form.firstname) }}</td></tr>
+                        <tr><td>{{ form_row(form.lastname) }}</td></tr>
+                        <tr><td>{{ form_row(form.gender) }}</td></tr>
+                        <tr><td>{{ form_row(form.email) }}</td></tr>
+                        <tr><td>{{ form_row(form.birthdate) }}</td></tr>
+                        <tr><td>{{ form_row(form.password) }}</td></tr>
+                        <tr><td>{{ form_row(form.submit) }}</td></tr>
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
 {% endblock%}

@@ -27,7 +27,8 @@ class RegisterType extends AbstractType
                     'max' => 30
                 ]),
                 'attr' => [
-                    'placeholder' => 'John'
+                    'placeholder' => 'John',
+                    'class' => 'form_input',
                 ],
             ])
             ->add('lastname',TextType::class,[
@@ -37,7 +38,8 @@ class RegisterType extends AbstractType
                     'max' => 30
                 ]),
                 'attr' => [
-                    'placeholder' => 'Durant'
+                    'placeholder' => 'Durant',
+                    'class' => 'form_input',
                 ],
             ])
             ->add('email',EmailType::class,[
@@ -46,18 +48,18 @@ class RegisterType extends AbstractType
                     'min' => 2,
                     'max' => 60]),
                 'attr' =>[
-                    'placeholder' => 'DurantJohn@mail.com'
+                    'placeholder' => 'DurantJohn@mail.com',
+                    'class' => 'form_input',
                 ],
             ])
             ->add('gender', ChoiceType::class,
                 [
                     'label'    => 'Genre',
-                    'row_attr' => ['class' => 'form_choices'],
+                    'attr' => ['class' => 'form_input'],
                     'choices'  =>
                         [
                             'Homme' => 'Homme',
                             'Femme'  => 'Femme',
-                            'Autre'  => 'Autre',
                         ],
                     'expanded' => true,
                     'multiple' => false
@@ -65,7 +67,8 @@ class RegisterType extends AbstractType
             )
             ->add('birthdate',BirthdayType::class,[
                 'years' => range(date('Y'), date('Y') -100),
-                'label' => 'Date de naissance',
+                'label' => 'Date de naissance'
+
             ])
             ->add('password',RepeatedType::class,[
                 'type' => PasswordType::class,
@@ -73,10 +76,16 @@ class RegisterType extends AbstractType
                 'label' => 'Mot de passe',
                 'required' => true,
                 'first_options' => ['label' => "Mot de passe"],
-                'second_options' => ['label' => "Confirmez votre mot de passe"]
+                'second_options' => ['label' => "Confirmez votre mot de passe"],
+                'attr' =>[
+                    'class' => 'form_input',
+                ]
             ])
             ->add('submit',SubmitType::class,[
-                'label' => "S'inscrire"
+                'label' => "S'inscrire",
+                'attr' =>[
+                    'class' => 'form_validate',
+                ]
             ])
         ;
     }

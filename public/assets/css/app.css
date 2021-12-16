@@ -6,11 +6,7 @@
     color:white;
 }
 
-.form-check{
-    background-color: #fffcfc  !important;
-    padding:20px 65px;
-    margin-top: 7px;
-}
+
 
 .title_order{
     margin-left: 72px;
@@ -256,10 +252,7 @@
     text-align: center;
 
 }
-.form-check{
-    background-color: #f1f1f1;
-    text-align: left;
-}
+
 
 .btn-block-filtre
 {
@@ -330,9 +323,7 @@
     margin-top: 70px;
     border: 1px solid;
 }
-.form-check{
-    border: 1px solid;
-}
+
 
 .body_order_class{
     background-color: white;
@@ -361,7 +352,58 @@
     font-weight: 400;
 }
 
+.form_register{
+    width: 30%;
+    margin-left: 550px;
+    text-align: center;
+    margin-top: 20px;
+}
 
+.form_register > h1{
+    font-family: Poppins,sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.form_input{
+    width: 100%;
+    background-color: #F6F7F9;
+    border: none;
+}
+
+.form_validate{
+    background-color: #C1FF3E;
+    width: 100%;
+    border: none;
+    color: #1a3c75;
+    font-family: Poppins,sans-serif;
+}
+
+#register_birthdate{
+    width: 300PX;
+    border: none;
+    justify-content: space-around;
+}
+
+#table_register{
+    width: 50%;
+    margin-left: 350px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+#bloc_left{
+    width: 60%;
+    background-image: url("https://images.unsplash.com/photo-1491485880348-85d48a9e5312?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: -100px;
+}
+
+#bloc_register{
+    width: 70%;
+    text-align: center;
+}
 @media screen and (min-width: 640px) {
     .menu_mobile{
         display: none;
