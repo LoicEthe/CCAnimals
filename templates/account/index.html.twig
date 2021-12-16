@@ -3,9 +3,12 @@
 {% block title %}Mon compte{% endblock %}
 
 {% block content %}
-    <h1>Mon compte</h1>
-    Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
-    C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+    <div style="margin-left: 30px">
+        <h1>Mon compte</h1>
+        Bienvenue {{ app.user.firstname }} dans votre compte.<br/>
+        C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+    </div>
+
     <hr>
     <div class="row ">
         <div class="col-md-4">

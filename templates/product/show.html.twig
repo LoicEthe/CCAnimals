@@ -3,7 +3,7 @@
 {% block title %}{{ product.name }}{% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row" style="margin-top: 50px">
         <div class="col-md-5">
             <img src="/uploads/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" style="margin-left: 150px">
         </div>
@@ -18,7 +18,7 @@
                 {% if product.stock < 1 %}
                     <a class="btn btn-secondary disabled">Article épuisé</a>
                 {% else %}
-                    <a href="{{ path('add_to_cart',{'id': product.id } ) }}" class="btn btn-success">Ajouter au panier</a>
+                    <a href="{{ path('add_to_cart',{'id': product.id } ) }}" class="btn btn-success form_validate" style="width: 25%">Ajouter au panier</a>
                 {% endif %}
         </div>
     </div>
@@ -28,7 +28,7 @@
         <p>Découvrez les articles les plus vendus.</p>
     </div>
 
-    <div class="row">
+    <div class="row" style="margin-top: -30px">
         {% for product in products %}
             <div class="col-md-3">
                 {% include 'product/single_product.html.twig' %}

@@ -25,7 +25,7 @@ class AccountPasswordController extends AbstractController
         $notification = null;
         $user = $this->getUser();
 
-        $form = $this->createForm(ChangePasswordType::class,$user);
+        $form = $this->createForm(ChangePasswordType::class,$user,['attr' => ['class' => 'form_password']]);
 
         $form->handleRequest($request);
 
